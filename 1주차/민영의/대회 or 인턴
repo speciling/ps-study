@@ -1,1 +1,11 @@
+a, b, c = map(int, input().split())
+team = 0
 
+while True:
+    if a + b - 3 >= c and a >= 2 and b >= 1:
+        a = a - 2
+        b = b - 1
+        team += 1
+    else:
+        break
+print(team)
