@@ -1,0 +1,10 @@
+a = int(input())
+b = list(map(int, input().split()))
+b.sort()
+c = []
+d = 0
+for i in range(0, len(b)):
+    c.append((b[:i+1]))
+    for j in range(i+1):
+        d += c[i][j]
+print(d)

@@ -1,0 +1,11 @@
+a, b = map(int, input().split())
+d = []
+e = 0
+for _ in range(a):
+    c = input()
+    d.append(int(c))
+d.sort(reverse = True)
+for i in d:
+    e += b // i
+    b %= i
+print(e)
