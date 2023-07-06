@@ -11,6 +11,6 @@ else:
         sum += i
 
 if(sum % 3 == 0):
-    print(''.join(str(_) for _ in val))
+    print("".join(map(str,val)))
 else:
     print("-1")
