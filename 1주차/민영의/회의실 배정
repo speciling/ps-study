@@ -1,0 +1,16 @@
+a = int(input())
+b = []
+for _ in range(a):
+    c, d = map(int, input().split())
+    b.append([c, d])
+b.sort(key = lambda x: x[0])
+b.sort(key = lambda x: x[1])
+
+answer = 0
+k = 0
+for i in range(len(b)):
+    j = b[i][0]
+    if j >= k:
+        answer += 1
+        k = b[i][1]
+print(answer)
