@@ -1,23 +1,29 @@
-from collections import deque
-a, b = map(int, input().split())
+a = int(input())
 graph = []
+count = []
+home = 0
 for _ in range(a):
     graph.append(list(map(int, input())))
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-def bfs(x,y):
-    queue = deque()
-    queue.append((x, y))
-    while queue:
-        x, y = queue.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0 or nx >= a or ny < 0 or ny >= b:
-                continue
-            if graph[nx][ny] == 1:
-                graph[nx][ny] = graph[x][y] + 1
-                queue.append((nx,ny))
-    return graph[a-1][b-1]
-print(bfs(0,0))
+def dfs(x,y):
+    global home
+    if x <= -1 or x >= a or y >= a or y <= -1:
+        return False
+    if graph[x][y] == 1:
+        home += 1
+        graph[x][y] = 0
+        dfs(x-1, y)
+        dfs(x, y-1)
+        dfs(x+1, y)
+        dfs(x, y+1)
+        return True
+    return False
+result = 0
+for i in range(a):
+    for j in range(a):
+        if dfs(i,j) == True:
+            result += 1
+            count.append(home)
+            home = 0
+print(result)
+for k in sorted(count):
+    print(k)
