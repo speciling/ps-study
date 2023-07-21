@@ -3,4 +3,4 @@ A = list(map(int,input().split()))
 B = list(map(int,input().split()))
 
 A.extend(B)
-print(*(sorted(A)))
+print(*sorted(A))
